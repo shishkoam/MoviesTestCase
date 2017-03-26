@@ -10,7 +10,6 @@ public interface Consts {
     int SUCCESS_CODE = 200;
     int SECOND = 1000;
     int TWO_MIN = 120000;
-    String ROTATION = "rotation";
     String CURR_MOVIE = "current_movie";
     String PARAM_RESULT = "result";
     String BASE_IMAGE_PATH = "http://image.tmdb.org/t/p/w185";

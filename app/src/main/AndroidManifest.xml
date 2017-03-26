@@ -28,7 +28,7 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".activity.DetailsActivity"></activity>
+        <activity android:name=".activity.DetailsActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -14,7 +13,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.user.simplervtest.R;
 import com.example.user.simplervtest.helpers.Consts;
 import com.example.user.simplervtest.helpers.MovieManager;
-import com.example.user.simplervtest.helpers.Utils;
 
 /**
  * Created by User on 25.03.2017

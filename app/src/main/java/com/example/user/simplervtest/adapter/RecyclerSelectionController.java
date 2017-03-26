@@ -8,7 +8,7 @@ import java.util.HashSet;
 public enum RecyclerSelectionController {
     INSTANCE;
 
-    HashSet<Integer> selectedItems = new HashSet<>();
+    private HashSet<Integer> selectedItems = new HashSet<>();
 
     public boolean isSelected(Integer item) {
         return selectedItems.contains(item);

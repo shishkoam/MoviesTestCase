@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 
 public class TimeService extends Service implements Consts {
 
-    ExecutorService es;
+    private ExecutorService es;
 
     public void onCreate() {
         super.onCreate();

@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements Consts {
         super.onSaveInstanceState(outState);
     }
 
-    public static void scheduleGettingTime(Context context) {
+    private static void scheduleGettingTime(Context context) {
         Intent i = new Intent(context, TimeService.class);
         PendingIntent pendingIntent = PendingIntent.getService(context, REQUEST_CODE, i, 0);
         long firstTime = SystemClock.elapsedRealtime();
