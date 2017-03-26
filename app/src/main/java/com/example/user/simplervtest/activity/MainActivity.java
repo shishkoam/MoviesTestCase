@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements Consts {
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
                 int statusCode = response.code();
-                if (statusCode == SUCCESS_CODE) {
+                if (statusCode == SUCCESS_CODE && recyclerView != null) {
                     List<Movie> movies = response.body().getResults();
                     MovieManager.INSTANCE.setMovieList(movies);
                     setMoviesToRV(movies);
