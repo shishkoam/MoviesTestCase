@@ -14,6 +14,6 @@ public interface Consts {
     String PARAM_RESULT = "result";
     String BASE_IMAGE_PATH = "http://image.tmdb.org/t/p/w185";
     String BROADCAST_ACTION = "com.example.user.simplervtest";
-
-
+    String TITLE_KEY = "title_key";
+    String IMAGE_URL = "image_key";
 }

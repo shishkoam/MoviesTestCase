@@ -55,18 +55,19 @@ public class MainActivity extends AppCompatActivity implements Consts {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //register receiver
+        br = new TimeReceiver(this);
+        IntentFilter intFilt = new IntentFilter(BROADCAST_ACTION);
+        registerReceiver(br, intFilt);
+
         recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (savedInstanceState == null) {
             loadMoviesFromServer();
+            scheduleGettingTime(this);
         } else {
             setMoviesToRV(MovieManager.INSTANCE.getMovieList());
         }
-        //register receiver
-        br = new TimeReceiver();
-        IntentFilter intFilt = new IntentFilter(BROADCAST_ACTION);
-        registerReceiver(br, intFilt);
-        scheduleGettingTime(this);
     }
 
     private void loadMoviesFromServer() {

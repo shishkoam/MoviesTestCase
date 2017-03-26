@@ -32,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity implements Consts {
         binding.setVariable(BR.movie, getIntent().getSerializableExtra(CURR_MOVIE));
 
         //register receiver
-        br = new TimeReceiver();
+        br = new TimeReceiver(this);
         IntentFilter intFilt = new IntentFilter(BROADCAST_ACTION);
         registerReceiver(br, intFilt);
     }
