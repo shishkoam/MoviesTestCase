@@ -29,6 +29,7 @@ import com.example.user.simplervtest.R;
 import com.example.user.simplervtest.adapter.RecyclerBindingAdapter;
 import com.example.user.simplervtest.helpers.Consts;
 import com.example.user.simplervtest.helpers.MovieManager;
+import com.example.user.simplervtest.helpers.Utils;
 import com.example.user.simplervtest.model.Movie;
 import com.example.user.simplervtest.model.MoviesResponse;
 import com.example.user.simplervtest.rest.ApiClient;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements Consts {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         if (savedInstanceState == null) {
             loadMoviesFromServer();
-            scheduleGettingTime(this);
+            Utils.scheduleService(this, new Intent(this, TimeService.class), TWO_MIN);
         } else {
             setMoviesToRV(MovieManager.INSTANCE.getMovieList());
         }
@@ -116,18 +117,6 @@ public class MainActivity extends AppCompatActivity implements Consts {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-    }
-
-    private static void scheduleGettingTime(Context context) {
-        Intent i = new Intent(context, TimeService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(context, REQUEST_CODE, i, 0);
-        long firstTime = SystemClock.elapsedRealtime();
-        firstTime += SECOND;//start 1 seconds after first register.
-
-        // Schedule the alarm!
-        AlarmManager am = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstTime,
-                TWO_MIN, pendingIntent);//2min interval
     }
 
     @Override
