@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">simplervtest</string>
+    <string name="internal_error">Внутрення ошибка сервера! Попробуйте позже или обратитесь в поддержку.</string>
+    <string name="network_error">Невозможно получить информацию с сервера!</string>
+    <string name="activity_image_trans">activity_image_trans</string>
+    <string name="current_time">"Текущее время:  %1$s"</string>
+    <string name="ok">ОК</string>
+</resources>
