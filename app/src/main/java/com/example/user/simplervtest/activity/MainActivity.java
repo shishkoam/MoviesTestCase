@@ -1,9 +1,6 @@
 package com.example.user.simplervtest.activity;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Canvas;
@@ -13,7 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +45,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements Consts {
 
     private RecyclerView recyclerView;
-    private BroadcastReceiver br;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +53,9 @@ public class MainActivity extends AppCompatActivity implements Consts {
         setContentView(R.layout.activity_main);
 
         //register receiver
-        br = new TimeReceiver(this);
-        IntentFilter intFilt = new IntentFilter(BROADCAST_ACTION);
-        registerReceiver(br, intFilt);
+        broadcastReceiver = new TimeReceiver(this);
+        IntentFilter intentFilter = new IntentFilter(BROADCAST_ACTION);
+        registerReceiver(broadcastReceiver, intentFilter);
 
         recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -123,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements Consts {
     protected void onDestroy() {
         super.onDestroy();
         // unregister BroadcastReceiver
-        unregisterReceiver(br);
+        unregisterReceiver(broadcastReceiver);
     }
 
     /**

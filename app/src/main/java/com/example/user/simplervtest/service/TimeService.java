@@ -17,11 +17,11 @@ import java.util.concurrent.Executors;
 
 public class TimeService extends Service implements Consts {
 
-    private ExecutorService es;
+    private ExecutorService executorService;
 
     public void onCreate() {
         super.onCreate();
-        es = Executors.newFixedThreadPool(2);
+        executorService = Executors.newFixedThreadPool(2);
     }
 
     public void onDestroy() {
@@ -31,7 +31,7 @@ public class TimeService extends Service implements Consts {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         MyRun mr = new MyRun(startId);
-        es.execute(mr);
+        executorService.execute(mr);
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -50,9 +50,9 @@ public class TimeService extends Service implements Consts {
 
         public void run() {
             Intent intent = new Intent(BROADCAST_ACTION);
-            Calendar c = Calendar.getInstance();
-            SimpleDateFormat df = new SimpleDateFormat("HH:mm");
-            String formattedDate = df.format(c.getTime());
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+            String formattedDate = dateFormat.format(calendar.getTime());
             intent.putExtra(PARAM_RESULT, formattedDate);
             sendBroadcast(intent);
             stop();

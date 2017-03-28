@@ -16,7 +16,7 @@ import com.example.user.simplervtest.service.TimeReceiver;
 
 public class DetailsActivity extends AppCompatActivity implements Consts {
 
-    private BroadcastReceiver br;
+    private BroadcastReceiver broadcastReceiver;
     private static final int LAYOUT_ACTIVITY = R.layout.activity_details;
     private Movie movie;
     @Override
@@ -32,16 +32,16 @@ public class DetailsActivity extends AppCompatActivity implements Consts {
         binding.setVariable(BR.movie, getIntent().getSerializableExtra(CURR_MOVIE));
 
         //register receiver
-        br = new TimeReceiver(this);
-        IntentFilter intFilt = new IntentFilter(BROADCAST_ACTION);
-        registerReceiver(br, intFilt);
+        broadcastReceiver = new TimeReceiver(this);
+        IntentFilter intentFilter = new IntentFilter(BROADCAST_ACTION);
+        registerReceiver(broadcastReceiver, intentFilter);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // unregister BroadcastReceiver
-        unregisterReceiver(br);
+        unregisterReceiver(broadcastReceiver);
     }
 
     @Override
